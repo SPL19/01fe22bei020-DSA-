@@ -1,0 +1,1 @@
+Key element 3 is found at index 2
