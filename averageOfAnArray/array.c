@@ -1,0 +1,59 @@
+#include <stdio.h>
+int averageArray(int [] ,int );
+int main()
+{
+    int arr[10];
+    FILE *input, *output;
+    input = fopen("input.txt", "r");
+    if (input == NULL)
+    {
+        perror("\nError in opening input file\n");
+        return 1;
+    }
+
+    int i = 0;
+    int j = 0;
+    while (fscanf(input, "%d", &arr[i]) != EOF)
+    {
+        i++;
+        if (i >= 10)
+        {
+            printf("Array size limit reached!\n");
+            break;
+        }
+    }
+    fclose(input);
+
+    int size = i;
+
+    int avg = averageArray(arr, size);
+
+    printf("Elements are:\n");
+    for (j = 0; j < size; j++)
+    {
+        printf("%d ", arr[j]);
+    }
+    printf("\n");
+
+    output = fopen("output.txt", "w");
+    if (output == NULL)
+    {
+        perror("\nError in opening output file\n");
+        return 1;
+    }
+
+    printf("%d",avg);
+    fprintf(output, "%d\n", avg);
+    fclose(output);
+    return 0;
+}
+int averageArray(int arr[],int size)
+{
+    int sum=0;
+    for (int j = 0; j < size; j++)
+    {
+            sum=sum+size;
+    }
+    int avg=sum/size;
+    return avg;
+}
